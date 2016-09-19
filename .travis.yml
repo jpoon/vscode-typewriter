@@ -24,11 +24,11 @@ before_install:
     fi
 
 install:
-  - npm install
-  - npm run vscode:prepublish
+  - npm install;
+  - npm run vscode:prepublish;
 
 script:
-  - npm test --silent
+  - npm test --silent;
 
 after_success:
   - npm install -g vsce;
