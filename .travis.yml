@@ -1,0 +1,53 @@
+notifications:
+    email: false
+
+sudo: false
+
+os:
+  - osx
+  - linux
+
+language: node_js
+
+node_js:
+  - "6.3.1"
+
+env:
+  global:
+    secure: awRYn5Bvp5GNYlkKiaMSMng6n5MrePToMQsBKtFaUvh/BXt5Fk416AhGMjqPxd5XdQdMOoisMnjvYTUd2ykz7MRPmhMfOlhrueoiCXXI5BMPMOc8NNnz0c1/Jd88HXyMccfdS3D3AVjdNDpeYQh9/xUicFx0XSgYsGqz6yWAjfy8zhn77GLWwkDYqSWLTiLbL2/Us41gScNIJoqPHMO17nw6zftnvRNKbXvTAhcbNZdaf5ZfALiCyo1xqRbNL6EWL67gNJyw/eSt/uq+30gRFyRcT8aqFCbesvr5eAvMLfrYB3LDNWdXY4nRCduAtEyxlhCgx5G9Zu5BCvul1vu7c8UAmzBd6Pi0JPBGcKIu+ZV3K1UhSiIuH+zep1MYMRappz1ZPYrhG93r4tJx83OLhMoiGeWHLXKOJhIwCqEeFxp8B4eOPlYW7ciYG/AvcvoQJhmVfvrd6xoSsEDb9FkKC/7733Vvubt30AarKvK1GF7wJepKpbp5IJfKhxMbaHSEm9FP1xa1jvu7QtUGcf3iROu0XCm+QPQzAANyArA/CoZR7I6lhRwRz2tpPn4xWEW08QdARPSdCFsaGyVJEgrkmRDyUpjFoan3tI4PPq7aotoL5c4Di8Ld5e1q/vgGgA58Y64vIOWjYDzP2beNkZexY61QxZrJo80/gddD3nN3j2M=
+
+before_install:
+  - if [ $TRAVIS_OS_NAME == "linux" ]; then
+      export CXX="g++-4.9" CC="gcc-4.9" DISPLAY=:99.0;
+      sh -e /etc/init.d/xvfb start;
+      sleep 3;
+    fi
+
+install:
+  - npm install
+  - npm run vscode:prepublish
+
+script:
+  - npm test --silent
+
+after_success:
+  - npm install -g vsce;
+  - vsce package;
+
+deploy:
+  - provider: releases
+    api_key:
+      secure: fDncGA9xiMjPgUQqImnVvJt4V+aZRCJw59ZHP+DyrQze89UV6kLBjDKRnOZbebvDMqmHJK7mnrEW8R3RNvgHQyivHCag8bG3JXXs7wmFM710eQ1mEhWp5J4+N43pmrPB3lvyt+CA5zJtmq3bRGvcu5tzjRv7fd9KIGduNbjwhCSKU8ky0YsZ7CrEasWejWprYwyWM5/yg2QgD5SeecZs4/BWA6UO7plSm0UipOpjZGBKr6SySSmuVMCWAwOyAcKer1V0z9JVBU1RsObhuvmtYzKjKMgpAuV+eS9U/MXhpTH/Xc9JlO1p6lCYJC0q0EcbSKx+B+iCZw0AHOXSgNs2w938Kb85s4ZB0VmaT/XfZ4YRvNQNiNQCURFbpURvbedVe54kQc2zGOYohsi8fYUHH67yFmeH9a3eDxRSPZXQUHYO2p291kijkfhvyYQCVT7+wikVU5V+1zZpRHPFVA6PwzgrpT6twTvNr8vS3l/Lp8cFkQ5FIyW3OdvD6kR2OxaKfeH5n7yIx/jRc0DKkkrc+dbTGHKBdUZNNJSFufvquuM0l4Dx34gL7s2egmzQ6s4Zdy9dPebgs59Nnif2fMg4gLBCBqqsZHL3PuiZVcfqxEjAg+mlgAegLKxMewE9S2ieFN4oj1hP1jJnH5MD+u555MJl2UgW3Ttiqi8h5xCIhfc=
+    file_glob: true
+    file: "*.vsix"
+    skip_cleanup: true
+    on:
+      repo: jpoon/vscode-typewriter
+      branch: release
+      tags: true
+  - provider: script
+    script: vsce publish -p $VS_TOKEN
+    on:
+      repo: jpoon/vscode-typewriter
+      branch: release
+      tags: true

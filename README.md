@@ -1,4 +1,4 @@
-# vscode-typewriter README
+# vscode-typewriter
 
 This is the README for your extension "vscode-typewriter". After writing up a brief description, we recommend including the following sections.
 
