@@ -1,65 +1,16 @@
+[![Build Status](https://travis-ci.org/jpoon/vscode-typewriter.svg?branch=master)](https://travis-ci.org/jpoon/vscode-typewriter)
+
 # vscode-typewriter
 
-This is the README for your extension "vscode-typewriter". After writing up a brief description, we recommend including the following sections.
+A [Visual Studio Code](https://code.visualstudio.com/) extension that makes typewriter sounds as you type. 
 
-## Features
+You probably came here via [Silicon Valley Code Camp](www.siliconvalley-codecamp.com/Session/2016/mastering-vscode-building-your-first-extension) where I gave a 75 minute talk on VSCode. 
+As this app was my demo, you'll find a few shortcuts and things one might do differently in a real-world example. 
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Prior Art
 
-For example if there is an image subfolder under your extension project workspace:
+Thanks [@timmyreilly](https://github.com/timmyreilly) for the inspiration with [TypewriterNoises-VSCode](https://github.com/timmyreilly/TypewriterNoises-VSCode).
 
-\!\[feature X\]\(images/feature-x.png\)
+## License
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Copyright (c) Microsoft Corporation, licensed under [The MIT License (MIT)](https://raw.githubusercontent.com/jpoon/vscode-typewriter/master/LICENSE).
