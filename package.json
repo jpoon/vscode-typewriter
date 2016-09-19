@@ -1,11 +1,23 @@
 {
   "name": "vscode-typewriter",
   "displayName": "vscode-typewriter",
-  "description": "typewriter",
+  "description": "Make VS Code sound like a typewriter",
   "version": "0.0.1",
   "publisher": "jasonpoon",
   "engines": {
     "vscode": "^1.4.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "typewriter"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpoon/vscode-typewriter.git"
+  },
+  "homepage": "https://github.com/jpoon/vscode-typewriter",
+  "bugs": {
+    "url": "https://github.com/jpoon/vscode-typewriter/issues"
   },
   "categories": [
     "Other"
