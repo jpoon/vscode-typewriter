@@ -45,11 +45,12 @@ deploy:
       repo: jpoon/vscode-typewriter
       branch: release
       tags: true
-      considition: $TRAVIS_OS_NAME = linux
+      condition: $TRAVIS_OS_NAME = linux
   - provider: script
     script: vsce publish -p $VS_TOKEN
+    skip_cleanup: true
     on:
       repo: jpoon/vscode-typewriter
       branch: release
       tags: true
-      considition: $TRAVIS_OS_NAME = linux
+      condition: $TRAVIS_OS_NAME = linux
