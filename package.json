@@ -2,7 +2,7 @@
   "name": "vscode-typewriter",
   "displayName": "vscode-typewriter",
   "description": "Make VS Code sound like a typewriter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "jasonpoon",
   "engines": {
     "vscode": "^1.4.0"
