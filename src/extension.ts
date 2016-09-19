@@ -2,6 +2,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+var player = require('play-sound')();
 
 interface VSCodeKeybinding {
   key: string;
@@ -38,7 +39,19 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function handleKey(key: string) : Promise<void> {
-    await vscode.window.showInformationMessage(key);
+    await vscode.window.activeTextEditor.edit(editBuilder => {
+        editBuilder.insert(vscode.window.activeTextEditor.selection.active, key);
+      });
+    return new Promise<void>((resolve, reject) => {  
+        player.play('audio/typewriter-key.mp3', err => { 
+            if (err) {
+                console.error(err);
+                reject(err);
+                return;
+            }
+            resolve();
+        });
+    });
 }
 
 // this method is called when your extension is deactivated
