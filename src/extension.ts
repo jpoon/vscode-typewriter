@@ -3,6 +3,18 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
+interface VSCodeKeybinding {
+  key: string;
+  command: string;
+  when: string;
+}
+
+const packagejson: {
+  contributes: {
+    keybindings: VSCodeKeybinding[];
+  }
+} = require('../../package.json'); 
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -11,17 +23,22 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "vscode-typewriter" is now active!');
 
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', () => {
-        // The code you place here will be executed every time your command is executed
+    for (let { key } of packagejson.contributes.keybindings) {
+        const isShift = new RegExp('Shift\\+', "gi");
 
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
-    });
+        if (isShift.test(key)) {
+            key = key.replace(isShift, '').toLocaleUpperCase();
+        }
+        let disposable = vscode.commands.registerCommand(`extension.typewriter_${ key }`, () => {
+            handleKey(key);
+        });
 
-    context.subscriptions.push(disposable);
+        context.subscriptions.push(disposable);
+    }
+}
+
+async function handleKey(key: string) : Promise<void> {
+    await vscode.window.showInformationMessage(key);
 }
 
 // this method is called when your extension is deactivated
