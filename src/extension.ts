@@ -43,7 +43,7 @@ async function handleKey(key: string) : Promise<void> {
         editBuilder.insert(vscode.window.activeTextEditor.selection.active, key);
       });
     return new Promise<void>((resolve, reject) => {  
-        player.play('audio/typewriter-key.mp3', err => { 
+        player.play(__dirname + '/../audio/typewriter-key.mp3', err => { 
             if (err) {
                 console.error(err);
                 reject(err);
