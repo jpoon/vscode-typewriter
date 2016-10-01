@@ -43,7 +43,7 @@ deploy:
     skip_cleanup: true
     on:
       repo: jpoon/vscode-typewriter
-      branch: release
+      branch: master 
       tags: true
       condition: $TRAVIS_OS_NAME = linux
   - provider: script
@@ -51,6 +51,6 @@ deploy:
     skip_cleanup: true
     on:
       repo: jpoon/vscode-typewriter
-      branch: release
+      branch: master 
       tags: true
       condition: $TRAVIS_OS_NAME = linux
