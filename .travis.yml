@@ -9,9 +9,6 @@ os:
 
 language: node_js
 
-node_js:
-  - "6.3.1"
-
 env:
   global:
     secure: awRYn5Bvp5GNYlkKiaMSMng6n5MrePToMQsBKtFaUvh/BXt5Fk416AhGMjqPxd5XdQdMOoisMnjvYTUd2ykz7MRPmhMfOlhrueoiCXXI5BMPMOc8NNnz0c1/Jd88HXyMccfdS3D3AVjdNDpeYQh9/xUicFx0XSgYsGqz6yWAjfy8zhn77GLWwkDYqSWLTiLbL2/Us41gScNIJoqPHMO17nw6zftnvRNKbXvTAhcbNZdaf5ZfALiCyo1xqRbNL6EWL67gNJyw/eSt/uq+30gRFyRcT8aqFCbesvr5eAvMLfrYB3LDNWdXY4nRCduAtEyxlhCgx5G9Zu5BCvul1vu7c8UAmzBd6Pi0JPBGcKIu+ZV3K1UhSiIuH+zep1MYMRappz1ZPYrhG93r4tJx83OLhMoiGeWHLXKOJhIwCqEeFxp8B4eOPlYW7ciYG/AvcvoQJhmVfvrd6xoSsEDb9FkKC/7733Vvubt30AarKvK1GF7wJepKpbp5IJfKhxMbaHSEm9FP1xa1jvu7QtUGcf3iROu0XCm+QPQzAANyArA/CoZR7I6lhRwRz2tpPn4xWEW08QdARPSdCFsaGyVJEgrkmRDyUpjFoan3tI4PPq7aotoL5c4Di8Ld5e1q/vgGgA58Y64vIOWjYDzP2beNkZexY61QxZrJo80/gddD3nN3j2M=
@@ -22,10 +19,12 @@ before_install:
       sh -e /etc/init.d/xvfb start;
       sleep 3;
     fi
+  - rvm install ruby-2.3.1
 
 install:
   - npm install;
   - npm run vscode:prepublish;
+  - gem install github_changelog_generator
 
 script:
   - npm test --silent;
@@ -33,6 +32,8 @@ script:
 after_success:
   - npm install -g vsce;
   - vsce package;
+  - github_changelog_generator
+  - cat CHANGELOG.md  
 
 deploy:
   - provider: releases

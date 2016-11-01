@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/jpoon/vscode-typewriter.svg?branch=master)](https://travis-ci.org/jpoon/vscode-typewriter)
-
-# vscode-typewriter
+# vscode-typewriter [![Build Status](https://travis-ci.org/jpoon/vscode-typewriter.svg?branch=master)](https://travis-ci.org/jpoon/vscode-typewriter)
 
 A [Visual Studio Code](https://code.visualstudio.com/) extension that makes typewriter sounds as you type. 
 
