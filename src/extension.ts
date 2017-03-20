@@ -1,4 +1,3 @@
-'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
@@ -39,11 +38,11 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function handleKey(key: string) : Promise<void> {
-    await vscode.window.activeTextEditor.edit(editBuilder => {
-        editBuilder.insert(vscode.window.activeTextEditor.selection.active, key);
-      });
+    await vscode.commands.executeCommand('default:type', {
+        text: key
+    });
     return new Promise<void>((resolve, reject) => {  
-        player.play(__dirname + '/../audio/typewriter-key.mp3', err => { 
+        player.play(__dirname + '/../../audio/typewriter-key.mp3', err => { 
             if (err) {
                 console.error(err);
                 reject(err);
