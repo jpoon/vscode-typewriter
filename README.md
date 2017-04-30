@@ -2,8 +2,7 @@
 
 A [Visual Studio Code](https://code.visualstudio.com/) extension that makes typewriter sounds as you type. 
 
-You probably came either through my talk on VSCode.
-As this extension was my demo, you'll find a few shortcuts and things one might do differently in a real-world example. 
+As this extension was my demo for a talk, you'll find a few shortcuts and things one might do differently in a real-world example. 
 
 ## Known Issues
 
