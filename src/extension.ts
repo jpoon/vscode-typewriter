@@ -13,7 +13,7 @@ const packagejson: {
   contributes: {
     keybindings: VSCodeKeybinding[];
   }
-} = require('../../package.json'); 
+} = require('../../package.json');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -38,9 +38,24 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function handleKey(key: string) : Promise<void> {
-    await vscode.commands.executeCommand('default:type', {
-        text: key
-    });
+    switch(key){
+        case 'backspace':
+        await vscode.commands.executeCommand('deleteLeft');
+        break;
+        case 'tab':
+        await vscode.commands.executeCommand('tab');
+        break;
+        case 'space':
+        await vscode.commands.executeCommand('default:type', {
+            text: ' '
+        }); 
+        break;
+        default:
+        await vscode.commands.executeCommand('default:type', {
+            text: key
+        }); 
+        break;
+    };
     return new Promise<void>((resolve, reject) => {  
         player.play(__dirname + '/../../audio/typewriter-key.mp3', err => { 
             if (err) {
